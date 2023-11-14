@@ -13,13 +13,13 @@ const TypingAnimation = React.memo(() => {
         loop={Infinity}
         wrapper="p"
         steps={[
-          "React Developer",
+		  "Full Stack Developer",
+		  1000,
+          "Back End Developer",
           1000,
           "Front End Developer",
           1000,
           "Software Developer",
-          1000,
-          "Figma Expert",
           1000,
         ]}
         className="typing-text font-bold"
@@ -38,6 +38,7 @@ const AppBanner = () => {
 			className="flex flex-col sm:justify-between items-center sm:flex-row mt-12 md:mt-2"
 		>
 			<div className="w-full md:w-1/3 text-left">
+				
 				<motion.h1
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -46,9 +47,9 @@ const AppBanner = () => {
 						duration: 0.9,
 						delay: 0.1,
 					}}
-					className="font-general-semibold text-2xl lg:text-3xl xl:text-4xl text-center sm:text-left text-ternary-dark dark:text-primary-light uppercase"
+					className="font-general-semibold text-2xl lg:text-3xl xl:text-4xl text-center sm:text-left text-ternary-dark dark:text-primary-light"
 				>
-					Hi, I'm Hasan YALSIZ
+					Hi, I'm Jide!
 				</motion.h1>
 				<motion.p
 					initial={{ opacity: 0 }}
