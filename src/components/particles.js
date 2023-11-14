@@ -18,9 +18,7 @@ const ParticleComponent = () => {
     }, []);
 
     return (
-        <Particles 
-            height="100vh"
-            width="100%"
+        <Particles
             id="tsparticles" 
             init={particlesInit} 
             loaded={particlesLoaded} 
@@ -29,7 +27,7 @@ const ParticleComponent = () => {
                     number: {
                         value: 7,
                         density: {
-                            enable: true,
+                            enable: false,
                             value_area: 800,
                         },
                     },
