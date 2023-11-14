@@ -1,5 +1,5 @@
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
-import developerLight from '../../images/developer.svg';
+import developerLight from '../../images/developer-dark.webp';
 import developerDark from '../../images/developer-dark.webp';
 import { motion } from 'framer-motion';
 import Typical from 'react-typical'

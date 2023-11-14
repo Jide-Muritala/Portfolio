@@ -3,8 +3,8 @@ import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 import HireMeModal from '../HireMeModal';
-import logoLight from '../../images/logo-light.svg';
-import logoDark from '../../images/logo-dark.svg';
+import logoLight from '../../images/logo-light.png';
+import logoDark from '../../images/logo-dark.png';
 import { motion } from 'framer-motion';
 import Button from '../reusable/Button';
 
@@ -34,6 +34,11 @@ const AppHeader = () => {
 			setShowModal(false);
 		}
 	}
+
+	const handleButtonClick = () => {
+		setTheme(activeTheme === 'dark' ? 'light' : 'dark');
+		showHireMeModal();
+	};
 
 	return (
 		<motion.nav
@@ -168,9 +173,14 @@ const AppHeader = () => {
 				<div className="hidden sm:flex justify-between items-center flex-col md:flex-row">
 					<div className="hidden md:flex">
 						<span
-							onClick={showHireMeModal}
-							className="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-5 py-2.5 duration-300"
+							className={`text-md font-general-medium shadow-sm rounded-md px-5 py-2.5 duration-300 ${ 
+								activeTheme === 'dark' 
+								? 'bg-indigo-500 text-dark border-indigo-600'
+								: 'bg-red-500 text-white border-red-600'
+							}`}
+							onClick={handleButtonClick}
 							aria-label="Hire Me Button"
+							style={activeTheme === 'dark' ? {} : { backgroundColor: 'red' }}
 						>
 							<Button title="Hire Me" />
 						</span>
