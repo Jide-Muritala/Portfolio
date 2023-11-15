@@ -80,7 +80,7 @@ const ParticleComponent = () => {
                     },
                     move: {
                         enable: true,
-                        speed: 5,
+                        speed: 3,
                         direction: 'none',
                         random: true,
                         straight: false,
@@ -113,8 +113,8 @@ const ParticleComponent = () => {
                         random: true,
                         anim: {
                             enable: true,
-                            speed: 4,
-                            size_min: 6,
+                            speed: 3,
+                            size_min: 11,
                             sync: false
                         }
                     }
