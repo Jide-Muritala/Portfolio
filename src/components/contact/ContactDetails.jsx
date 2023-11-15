@@ -1,41 +1,17 @@
-import { FiPhone, FiMapPin, FiMail } from 'react-icons/fi';
-
-const contacts = [
-	{
-		id: 1,
-		name: 'İstanbul,Turkey',
-		icon: <FiMapPin />,
-	},
-	{
-		id: 2,
-		name: 'yalsizhasan@gmail.com',
-		icon: <FiMail />,
-	},
-	{
-		id: 3,
-		name: '+90 551 064 53 70',
-		icon: <FiPhone />,
-	},
-];
 
 const ContactDetails = () => {
 	return (
 		<div className="w-full lg:w-1/2">
 			<div className="text-left max-w-xl px-6">
 				<h2 className="font-general-medium text-2xl text-primary-dark dark:text-primary-light mt-12 mb-8">
-					Contact details
+					Get in touch
 				</h2>
-				<ul className="font-general-regular">
-					{contacts.map((contact) => (
-						<li className="flex " key={contact.id}>
-							<i className="text-2xl text-gray-500 dark:text-gray-400 mr-4">
-								{contact.icon}
-							</i>
-							<span className="text-lg mb-4 text-ternary-dark dark:text-ternary-light">
-								{contact.name}
-							</span>
-						</li>
-					))}
+				<ul className="font-general-regular text-primary-dark dark:text-primary-light mt-12 mb-8">
+					<p>
+						Are you looking for a high-performing and user-friendly website to represent you, your product or your business? 
+						or looking for any kind of consultation, want to ask some questions, or have some advice for me or just 
+						want to say hi. Please, get in touch and I will do my best to respond.
+					</p>
 				</ul>
 			</div>
 		</div>
