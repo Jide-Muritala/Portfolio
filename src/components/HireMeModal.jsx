@@ -2,40 +2,64 @@ import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
 import Button from "./reusable/Button";
 import React, { useRef } from "react";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const selectOptions = [
-  "Web Application",
-  "Mobile Application",
-  "UI/UX Design",
-  "Branding",
+  "Full Stack Development",
+  "Front End Development",
+  "Back End Development",
+  "WordPress",
 ];
 
 const HireMeModal = ({ onClose, onRequest }) => {
   const form = useRef();
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   console.log("Sending email...");
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log("Sending email...");
 
-  //   emailjs
-  //     .sendForm(
-  //       "service_6rvo2ej", // Service ID
-  //       "template_3mznq3l", // Template ID
-  //       form.current,
-  //       "bl7VDDEfmeg2mSKt1" // User ID (Public Key)
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //         form.current.reset();
-  //         alert("Email Sent!");
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  // };
+    // Validate form entries
+    const name = form.current.name.value.trim();
+    const email = form.current.email.value.trim();
+    const subject = form.current.subject.value.trim();
+    const message = form.current.message.value.trim();
+
+    if (!name || !email || !subject || !message) {
+      // If any required field is empty, display a warning
+      toast.warn("Please fill in all the required fields");
+      return;
+    }
+
+    console.log("Before sendForm");
+
+    emailjs
+      .sendForm(
+        "service_8e07nfl", // Service ID
+        "template_l4x5wij", // Template ID
+        form.current,
+        "5z1qiCPUNwYJdcK7p" // User ID (Public Key)
+      )
+      .then(
+        (result) => {
+          console.log("sendForm success:", result.text);
+          form.current.reset();
+          toast.success("Message Sent!");
+        },
+        (error) => {
+          console.log("sendForm success:", error.text);
+          toast.warn("Message could not be sent");
+        }
+      )
+      .finally(() => {
+        console.log("Before setTimeout");
+        setTimeout(() => {
+          console.log("After setTimeout");
+          onClose(); // Close the modal after a short delay
+        }, 1000); // Adjust the delay as needed (in milliseconds)
+      });
+  };
 
   return (
     <motion.div
@@ -53,7 +77,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
           <div className="modal max-w-md mx-5 xl:max-w-xl lg:max-w-xl md:max-w-xl bg-secondary-light dark:bg-primary-dark max-h-screen shadow-lg flex-row rounded-lg relative">
             <div className="modal-header flex justify-between gap-10 p-5 border-b border-ternary-light dark:border-ternary-dark">
               <h5 className=" text-primary-dark dark:text-primary-light text-xl">
-                What project are you looking for?
+                Short detail of the project
               </h5>
               <button
                 onClick={onClose}
@@ -65,7 +89,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
             <div className="modal-body p-5 w-full h-full">
               <form
                 ref={form}
-                // onSubmit={sendEmail}
+                onSubmit={sendEmail}
                 className="max-w-xl m-4 text-left"
               >
                 <div className="">
@@ -121,7 +145,6 @@ const HireMeModal = ({ onClose, onRequest }) => {
 
                 <div className="mt-6 pb-4 sm:pb-1">
                   <span
-                    onClick={onClose}
                     type="submit"
                     className="px-4
 											sm:px-6
@@ -132,9 +155,9 @@ const HireMeModal = ({ onClose, onRequest }) => {
 											hover:bg-indigo-600
 											rounded-md
 											focus:ring-1 focus:ring-indigo-900 duration-500"
-                    aria-label="Submit Request"
+                    aria-label="Send Message"
                   >
-                    <Button title="Send Request" />
+                    <Button title="Send Message" />
                   </span>
                 </div>
               </form>
@@ -152,6 +175,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
               >
                 <Button title="Close" />
               </span>
+              <ToastContainer />
             </div>
           </div>
         </div>
