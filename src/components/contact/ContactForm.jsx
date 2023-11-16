@@ -5,9 +5,6 @@ import emailjs from "emailjs-com";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 const ContactForm = () => {
   const notify = () => toast.success("Message Sent!");
   const form = useRef();
@@ -15,6 +12,18 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     console.log("Sending email...");
+
+  // Validate form entries
+  const name = form.current.name.value.trim();
+  const email = form.current.email.value.trim();
+  const subject = form.current.subject.value.trim();
+  const message = form.current.message.value.trim();
+
+  if (!name || !email || !subject || !message) {
+    // If any required field is empty, display a warning
+    toast.warn("Please fill in all the required fields");
+    return;
+  }
 
     emailjs
       .sendForm(
